@@ -17,11 +17,11 @@ public class GatewayConfig {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-            // Rota para o serviço "Customer"
+            // Rota para o serviço "CobrarService"
             .route("customer-service-route", r -> r
                 .path("/api/customers/**")
                 .filters(f -> f.stripPrefix(1))
-                .uri(useNewCustomerService ? "http://localhost:8081" : "http://legacy-system-url")
+                .uri(useNewCustomerService ? "http://localhost:8082" : "http://legacy-system-url")
             )
             // Rota padrão que encaminha demais requisições ao sistema legado
             .route("legacy-route", r -> r
