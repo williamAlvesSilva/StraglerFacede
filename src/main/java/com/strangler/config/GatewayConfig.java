@@ -18,8 +18,8 @@ public class GatewayConfig {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
             // Rota para o serviço "CobrarService"
-            .route("customer-service-route", r -> r
-                .path("/api/customers/**")
+            .route("cobranca-divida-service-route", r -> r
+                .path("/api/cobranca-divida/**")
                 .filters(f -> f.stripPrefix(1))
                 .uri(useNewCustomerService ? "http://localhost:8082" : "http://legacy-system-url")
             )
